@@ -26,6 +26,7 @@ body, html, .App, #root, .auth-wrapper {
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  margin-top: 50px;
 }
 .auth-inner {
   width: 450px;
@@ -45,6 +46,7 @@ body, html, .App, #root, .auth-wrapper {
   margin: 0;
   line-height: 1;
   padding-bottom: 20px;
+ 
 }
 .custom-control-label {
   font-weight: 400;

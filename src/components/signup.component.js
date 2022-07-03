@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Outernavbar from './outernavbar.component'
-import axios from 'axios';
+ import axios from 'axios';
+
+
 
 export default class SignUp extends Component {
 
@@ -42,6 +44,9 @@ export default class SignUp extends Component {
     }
     onSubmit(e) {
         e.preventDefault()
+
+
+
         const userObject = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
@@ -52,9 +57,8 @@ export default class SignUp extends Component {
         };
         axios.post('http://127.0.0.1:8000/api/auth/register', userObject)
             .then((res) => {
-                console.log(res.data)
                 if(res.data.message === "User successfully registered"){
-                    alert("Registration Successfull")
+                    alert("Registration Successful")
                     window.location = "/sign-in";
                 }
             }).catch((error) => {
@@ -70,8 +74,10 @@ export default class SignUp extends Component {
         <Outernavbar/>
         <div className="auth-wrapper">
       <div className="auth-inner">
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit}
+                 >
         <h3>Sign Up</h3>
+        <div>
         <div className="mb-3">
           <label>First name</label>
           <input
@@ -79,11 +85,20 @@ export default class SignUp extends Component {
             className="form-control"
             placeholder="First name"
             onChange={this.onChangeFirstName}
+            name="firstname"
+            value={this.state.first_name}
           />
+         
         </div>
         <div className="mb-3">
           <label>Last name</label>
-          <input type="text" className="form-control" placeholder="Last name" onChange={this.onChangeLastName} />
+          <input 
+           type="text"
+           className="form-control" 
+           placeholder="Last name" 
+           onChange={this.onChangeLastName}
+           name="lastname"
+           value={this.state.last_name} />
         </div>
         <div className="mb-3">
           <label>Phone Number</label>
@@ -92,6 +107,9 @@ export default class SignUp extends Component {
             className="form-control"
             placeholder="Enter phone number"
             onChange={this.onChangePhone}
+            name="phone"
+            value={this.state.phone}
+            
           />
         </div>
         <div className="mb-3">
@@ -101,6 +119,8 @@ export default class SignUp extends Component {
             className="form-control"
             placeholder="Enter email"
             onChange={this.onChangeUserEmail}
+            name="email"
+            value={this.state.email}
           />
         </div>
         <div className="mb-3">
@@ -110,6 +130,8 @@ export default class SignUp extends Component {
             className="form-control"
             placeholder="Enter password"
             onChange={this.onChangePassword}
+            name="password"
+            value={this.state.password}
           />
         </div>
         <div className="mb-3">
@@ -119,6 +141,8 @@ export default class SignUp extends Component {
             className="form-control"
             placeholder="Enter password"
             onChange={this.onChangePasswordConfirmation}
+            name="confirmpassword"
+            value={this.state.password_confirmation}
           />
         </div>
         <div className="d-grid">
@@ -129,10 +153,14 @@ export default class SignUp extends Component {
         <p className="forgot-password text-right">
           Already registered <a href="/sign-in">sign in?</a>
         </p>
+        </div>
+        
+
       </form>
       </div>
       </div>
       </div>
+     
     )
   }
 }

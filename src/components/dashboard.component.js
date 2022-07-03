@@ -1,8 +1,26 @@
 import React, { Component } from 'react'
-
+import { Navigate } from 'react-router-dom';
 
 export default class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    const udata = localStorage.getItem('user')
+    const odata = JSON.parse(udata)
+    let loggedIN = true
+    if (udata == null){
+      loggedIN = false
+    }
+    this.state = {
+      user : odata.user,
+      loggedIN
+    }
+}
+
+ 
   render() {
+    if(this.state.loggedIN === false){
+      return  <Navigate to="/sign-in" />
+    }
     return (
         <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,6 +38,11 @@ export default class Dashboard extends Component {
                 <a className="nav-link" href="/dashboard">Link</a>
               </li>
               </ul>
+              <ul>
+              <li className="nav-item">
+                <a className="nav-link" href="/logout">logout</a>
+              </li>
+              </ul>
             <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
@@ -28,7 +51,7 @@ export default class Dashboard extends Component {
         </div>
       </nav>
 
-      <h1>Welcome to dashboard</h1>
+      <h1>welcome to your profile {this.state.user.first_name}</h1>
       </div>
     )
   }
