@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
         <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/dashboard">Navbar</a>
+          <a className="navbar-brand" href="/dashboard">React.js and Larevel App</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -34,24 +34,15 @@ export default class Dashboard extends Component {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/dashboard">Link</a>
-              </li>
               </ul>
-              <ul>
-              <li className="nav-item">
-                <a className="nav-link" href="/logout">logout</a>
-              </li>
+              <ul className="navbar-nav">
+                 <a class="nav-link" href="/logout">logout </a>
               </ul>
-            <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
 
-      <h1>welcome to your profile {this.state.user.first_name}</h1>
+      <h1 className="text-black mt-5">welcome to your profile <span className="text-primary">{this.state.user.first_name} </span></h1>
       </div>
     )
   }
