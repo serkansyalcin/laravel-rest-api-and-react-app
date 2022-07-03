@@ -45,7 +45,21 @@ export default class SignUp extends Component {
     onSubmit(e) {
         e.preventDefault()
 
-
+    if(this.state.first_name.length<2 || this.state.first_name.length>20 ){
+      alert("First-name should be between 2-20 charaters")
+    }
+    if(this.state.last_name.length<2 || this.state.last_name.length>20 ){
+      alert("Last-name should be between 2-20 charaters")
+    }
+    if(this.state.phone.length<5 || this.state.phone.length>12 ){
+      alert("Phone number should be between 5-12 digits")
+    }
+    if(this.state.password.length<6 ){
+      alert("Password should be greater then 5 charaters")
+    }
+    if(this.state.password !== this.state.password_confirmation ){
+      alert("Enter same password in both fields")
+    }
 
         const userObject = {
             first_name: this.state.first_name,
@@ -57,12 +71,15 @@ export default class SignUp extends Component {
         };
         axios.post('http://127.0.0.1:8000/api/auth/register', userObject)
             .then((res) => {
+               console.log(res,"aaaaaaaaaaa");
                 if(res.data.message === "User successfully registered"){
                     alert("Registration Successful")
                     window.location = "/sign-in";
                 }
             }).catch((error) => {
-                console.log(error)
+                if(error.response.data ===  "{\"email\":[\"The email has already been taken.\"]}"){
+                  alert("The email has already been taken.")
+                }
             });
         this.setState({ first_name: '', last_name: '', phone: '', email: '', password: '', password_confirmation: '' })
     }

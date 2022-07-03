@@ -46,6 +46,7 @@ export default class Login extends Component {
                }
             }).catch((error) => {
                 console.log(error)
+                alert("Wrong email or password")
             });
         this.setState({ email: '', password: ''})
     }
