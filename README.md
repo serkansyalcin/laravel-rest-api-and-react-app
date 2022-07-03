@@ -1,5 +1,4 @@
-# We are using Laravel 9 for jwt authentication based login and 
-signup API. (React.js)
+# We are using Laravel 9 for jwt authentication based login and signup API. (React.js)
 
 We are using Laravel 9 for jwt authentication based login and 
 signup API. We use react.js on the frontend.
